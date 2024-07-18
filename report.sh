@@ -9,7 +9,7 @@ type="hubble"
 group=node
 
 docker_status=$(docker inspect hubble_hubble_1 | jq -r .[].State.Status)
-version=?
+version=$(docker logs hubble_hubble_1 2>&1 | grep -a "Hubble: " | tail -1 | awk -F "Hubble: " '{print $NF}'| awk -F '\\\\n' '{print $1}')
 
 case $docker_status in
   running) status=ok ;;
