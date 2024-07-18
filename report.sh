@@ -3,7 +3,7 @@
 source ~/.bash_profile
 
 id=$FARCASTER_ID
-chain=?
+chain=mainnet
 network=mainnet
 type="hubble"
 group=node
