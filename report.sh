@@ -7,6 +7,7 @@ chain=mainnet
 network=mainnet
 type="hubble"
 group=node
+owner=$OWNER
 
 docker_status=$(docker inspect hubble_hubble_1 | jq -r .[].State.Status)
 version=$(docker logs hubble_hubble_1 2>&1 | grep -a "Hubble: " | tail -1 | awk -F "Hubble: " '{print $NF}'| awk -F '\\\\n' '{print $1}')
@@ -38,6 +39,6 @@ then
   --header "Content-Type: text/plain; charset=utf-8" \
   --header "Accept: application/json" \
   --data-binary "
-    report,id=$id,machine=$MACHINE,grp=$group status=\"$status\",message=\"$message\",version=\"$version\",url=\"$url\",chain=\"$chain\",network=\"$network\" $(date +%s%N) 
+    report,id=$id,machine=$MACHINE,grp=$group,owner=$owner status=\"$status\",message=\"$message\",version=\"$version\",url=\"$url\",chain=\"$chain\",network=\"$network\" $(date +%s%N) 
     "
 fi
