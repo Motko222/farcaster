@@ -13,12 +13,6 @@ case $docker_status in
   *) status="error"; message="docker not running" ;;
 esac
 
-cat << EOF
-{
-
-}
-EOF
-
 cat >$json << EOF
 { 
   "updated":"$(date --utc +%FT%TZ)",
